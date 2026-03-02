@@ -1,0 +1,78 @@
+<!DOCTYPE html>>
+<html lang="id">
+<head>
+<meta charset="UTH-8">
+<meta name="viewport" content="width=divice-width, initial-scale=1.0">
+<title>Share Your Experience Form</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+    <img src="image/RobloxScreenShot20250810_090731236.png" alt="header" width="1312" height="300">
+    </header>
+    
+    <h1>Welcome to My Bookstore✨(Mutia Sabrina 11D)</h1>
+<nav> <a href="index.html">Home</a>
+    <a href="produk.html">Products</a>
+    <a href="bedah-buku.html">Review</a>
+    <a href="testimoni.html">Testimonials</a>
+    <a href="tampil-testimoni.html">Customer testimonials</a>
+</nav>
+
+<main class="formulir">
+    <h2>Share Your Experience With Us</h2>
+    <form id="formTestimoni">
+    <label for="nama">Name:</label>
+<input type="text" id="nama" name="nama" required placeholder="Full Name">
+
+<label for="email">Gmail:</label>
+<input type="email" id="email" name="email" required placeholder="email@example.com">
+
+<label for="asal">Asal Sekolah/Instalasi/Komunitas:</label>
+<input type="text" id="asal" name="asal" required placeholder="??">
+
+<label for="BookName">Book You Want to Buy:</label>
+<input type="text" id="BookName" name="BookName">
+
+<label for="Rating">Rating 1-5:</label>
+<input type="text" id="Rating" name="Rating">
+
+<label for="pesan">Your Experience:</label>
+<textarea id="pesan" name="pesan" required placeholder="Your Experience..." rows="5"></textarea>
+
+<button type="submit">Tell Us Your Experience</button>
+    </form>
+</main>
+<footer>
+    <p>&copy; 2009 camarell's store</p>
+</footer>
+<script>
+    document.getElementById('formTestimoni').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const nama = document.getElementById('nama').value;
+        const email = document.getElementById('email').value;
+        const asal = document.getElementById('asal').value;
+        const BookName = document.getElementById('BookName').value;
+        const rating = document.getElementById('Rating').value;
+        const pesan = document.getElementById('pesan').value;
+        const dataBaru = {nama, email, asal, BookName, rating, pesan};
+
+//Ambil list dari localStorage
+const testimoniList = JSON.parse(localStorage.getItem('testimoniList')) || [];
+
+//tambahkan testimoni baru
+testimoniList.push(dataBaru);
+
+//simpan kembali ke localStorage
+localStorage.setItem('testimoniList',JSON.stringify(testimoniList));
+
+//Arahkan ke halamn konfirmasi 
+window.location.href = 'proses-testimoni.html';
+
+    });
+    
+</script>
+</body>
+</html>

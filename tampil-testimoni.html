@@ -1,0 +1,68 @@
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=divice-width, initial-scale=1.0">
+    <title>Formulir Testimoni - My Bookstore(Mutia Sabrina)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to My Bookstore✨(Mutia Sabrina 11D)</h1>
+        <nav> <a href="index.html">Home</a>
+            <a href="produk.html">Products</a>
+            <a href="bedah-buku.html">Review</a>
+            <a href="testimoni.html">Testimonials</a>
+            <a href="tampil-testimoni.html">Customer testimonials</a>
+        </nav>
+    </header>
+
+<main class="formulir">
+    <h2>Customer Testimonials :</h2>
+    <div id="daftarTestimoni"></div>
+
+    <button id="hapusSemua">Hapus Semua Testimoni</button>
+</div>
+
+    <section>
+    <div id="daftarTestimoni"></div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2009 camarell's store</p>
+</footer>
+
+<script>
+    const container = document.getElementById('daftarTestimoni');
+    const testimoniList = JSON.parse(localStorage.getItem('testimoniList')) || [];
+    if(testimoniList.length === 0) {
+        container.innerHTML = "<p>Belum Ada testimoni. </p>";
+    }else{ 
+        testimoniList.forEach((t, i) => { const el = document.createElement('div');
+        el.className = 'testimoni-box';
+        el.innerHTML = `
+            <p><strong>Nama:</strong> ${t.nama}</p>
+            <p><strong>Asal:</strong> ${t.asal}</p>
+            <p><strong>Email:</strong> ${t.email}</p>
+            <p><strong>Book Name:</strong> ${t.BookName}</p>
+            <p><strong>Rating:</strong> ${t.rating}</p>
+            <p><strong>Pesan:</strong> ${t.pesan}</p>
+            `;
+            container.appendChild(el);
+        });
+    }
+
+    document.getElementById("hapusSemua").addEventListener("click", function() {
+        const konfirmasi = confirm("Apakah Anda uakin ingin menghapus semua testimoni?");
+        if (konfirmasi) {
+            localStorage.removeItem("testimoniList");
+            location.reload();
+
+        }
+    })
+
+</script>
+
+</body>
+</html>
